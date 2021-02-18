@@ -7,7 +7,7 @@ use Component\Ram;
 use Device\Keyboard;
 use Device\Mouse;
 use Device\Speaker;
-
+use Validator\AbstractComputerValidator;
 include 'includes/autoload.php';
 
 
@@ -61,3 +61,9 @@ $laptop0->setDevices([$keyboard0,$mouse0,$speaker0]);
 
 
 var_dump($laptop0);
+
+$validator = new AbstractComputerValidator();
+$isValid = $validator->validate($laptop0);
+var_dump($isValid);
+
+echo json_encode($laptop0);

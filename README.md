@@ -118,25 +118,25 @@ spl_autoload_register(function ($class) {
 ## 5. instanceof et validation de données
 
 - Nos objets sont maintenant plus courts et nous avons évité de dupliquer du code, nous pouvons commencer à ajouter d'autres éléments fonctionnels. Dans un premier temps, nous allons ajouter un objet de validation de nos objets de type `Computer`.
-  - [ ] Créer une branche `votreNom-exo-5`
-  - [ ] Ajouter une interface `ValidatorInterface` dans le dossier `Interfaces`
-  - [ ] Ajouter la signature suivante, qui va devoir être respectée par nos validateurs : `public function validate(Computer $computer): bool;`
-  - [ ] Créer le dossier `classes/Validator`, nous allons y ranger nos validateurs.
-  - [ ] Créer un fichier `ComputerValidator.php` dans ce dossier et créer la classe `ComputerValidator`
-  - [ ] Cette classe doit implémenter l'interface `ValidatorInterface` et avoir la méthode correspondante
-  - [ ] Dans cette méthode `validate`, dont le premier paramètre est un objet de type `Computer`, nous allons vérifier :
+  - [x] Créer une branche `votreNom-exo-5`
+  - [x] Ajouter une interface `ValidatorInterface` dans le dossier `Interfaces`
+  - [x] Ajouter la signature suivante, qui va devoir être respectée par nos validateurs : `public function validate(Computer $computer): bool;`
+  - [x] Créer le dossier `classes/Validator`, nous allons y ranger nos validateurs.
+  - [x] Créer un fichier `ComputerValidator.php` dans ce dossier et créer la classe `ComputerValidator`
+  - [x] Cette classe doit implémenter l'interface `ValidatorInterface` et avoir la méthode correspondante
+  - [x] Dans cette méthode `validate`, dont le premier paramètre est un objet de type `Computer`, nous allons vérifier :
     - Que le computer passé en paramètre contienne dans ses composants :
-      - [ ] un objet `MotherBoard`,
-      - [ ] un objet `Ram`,
-      - [ ] un objet `Cpu`,
-      - [ ] et 0 ou un objet `GraphicCard`
+      - [x] un objet `MotherBoard`,
+      - [x] un objet `Ram`,
+      - [x] un objet `Cpu`,
+      - [x] et 0 ou un objet `GraphicCard`
     - Que le computer passé en paramètre contienne dans ses périphériques :
-      - [ ] un objet `Keyboard`,
-      - [ ] un objet `Mouse`,
-      - [ ] 0 ou un objet `Speaker`
-  - [ ] Instancier ce validateur dans `index.php` et utiliser la méthode `validate` sur vos différents ordinateurs pour vérifier qu'ils sont valides
-  - [ ] Faire en sorte d'avoir au moins un ordinateur qui ne soit pas valide
-  - [ ] Si ça n'est pas déjà fait, créer un ou des commits dans votre branche, pusher et créer une PR (Pull Request) sur Github. Utiliser votre branche de l'exercice 4 comme base (plutôt que `main`)
+      - [x] un objet `Keyboard`,
+      - [x] un objet `Mouse`,
+      - [x] 0 ou un objet `Speaker`
+  - [x] Instancier ce validateur dans `index.php` et utiliser la méthode `validate` sur vos différents ordinateurs pour vérifier qu'ils sont valides
+  - [x] Faire en sorte d'avoir au moins un ordinateur qui ne soit pas valide
+  - [x] Si ça n'est pas déjà fait, créer un ou des commits dans votre branche, pusher et créer une PR (Pull Request) sur Github. Utiliser votre branche de l'exercice 4 comme base (plutôt que `main`)
 
 ## 6. Serialisation
 
