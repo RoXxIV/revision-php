@@ -4,6 +4,9 @@ use Component\Cpu;
 use Component\GraphicCard;
 use Component\MotherBoard;
 use Component\Ram;
+use Computer\Desktop;
+use Computer\Laptop;
+use Computer\Tablet;
 use Device\Keyboard;
 use Device\Mouse;
 use Device\Speaker;
@@ -29,6 +32,8 @@ echo'_____________________________________________________';
 $ram0 = new Ram;
 $ram0->setName('ddr4');
 $ram0->setBrand('Corsair');
+$ram0->setCompatibility([Desktop::class, Laptop::class]);
+
 
 $cpu0 = new Cpu;
 $cpu0->setName('h100 elite');
@@ -75,4 +80,6 @@ if (isset($_GET['api'])) {
 }
 
 echo json_encode($laptop0);
+
+var_dump($ram0->isCompatibleWith(Laptop::class));
 
