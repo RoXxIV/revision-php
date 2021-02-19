@@ -60,10 +60,19 @@ $laptop0->setComponents([$ram0,$cpu0,$graphicCard0,$motherBoard0]);
 $laptop0->setDevices([$keyboard0,$mouse0,$speaker0]);
 
 
-var_dump($laptop0);
 
 $validator = new AbstractComputerValidator();
 $isValid = $validator->validate($laptop0);
 var_dump($isValid);
 
+
+
+if (isset($_GET['api'])) {
+    header('Content-type: application/json');
+
+    echo json_encode($laptop0);
+    exit();
+}
+
 echo json_encode($laptop0);
+

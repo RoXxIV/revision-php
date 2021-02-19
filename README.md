@@ -142,30 +142,30 @@ spl_autoload_register(function ($class) {
 
 - Nous avons un outil de validation de nos ordinateurs, il va nous falloir d'autres outils dans la vie de ce projet, avant d'utiliser un framework. Un outil qui va nous servir plus tard, la sérialisation : l'art de convertir un objet PHP en un format de communication avec d'autres langages / technologies. Nous allons faire en sorte de convertir nos objets PHP au format JSON (et préparer un peu le terrain pour la partie sur les WebServices ;) ).
 
-  - [ ] Voir si la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (normalement, les objets vont renvoient du vide). Pour corriger ce rendu, nous allons expliquer à PHP comment passer d'un objet à un tableau, plus facile à convertir en JSON.
+  - [x] Voir si la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (normalement, les objets vont renvoient du vide). Pour corriger ce rendu, nous allons expliquer à PHP comment passer d'un objet à un tableau, plus facile à convertir en JSON.
   - Implémenter l'interface [JsonSerializable](https://www.php.net/manual/fr/class.jsonserializable.php) dans les objets `Computer`, `AbstractComponent` et `AbstractDevice`.
-    - [ ] En plus d'ajouter le `implements`, il faut également ajouter la méthode `jsonSerialize()` (obligatoire pour implémenter l'interface) qui va retourner un [tableau (associatif)](https://www.php.net/manual/fr/language.types.array.php), avec toutes les propriétés de l'objet (sur le format `'nomDeLaPropriete' => 'valeurDeLaPropriete'`).
+    - [x] En plus d'ajouter le `implements`, il faut également ajouter la méthode `jsonSerialize()` (obligatoire pour implémenter l'interface) qui va retourner un [tableau (associatif)](https://www.php.net/manual/fr/language.types.array.php), avec toutes les propriétés de l'objet (sur le format `'nomDeLaPropriete' => 'valeurDeLaPropriete'`).
   - Ajouter des propriétés supplémentaires dans les différents composants et périphériques et surcharger la méthode `jsonSerialize()` pour ces objets.
-    - [ ] Ajouter la propriété `$frequency` (float) à la class `Cpu`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$size` (integer) à la class `Ram`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
-    - [ ] Ajouter la propriété `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
-    - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php#example-238))
+    - [x] Ajouter la propriété `$frequency` (float) à la class `Cpu`, avec son getter et son setter
+    - [x] Ajouter la propriété `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
+    - [x] Ajouter la propriété `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
+    - [x] Ajouter la propriété `$size` (integer) à la class `Ram`, avec son getter et son setter
+    - [x] Ajouter la propriété `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
+    - [x] Ajouter la propriété `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
+    - [x] Ajouter la propriété `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
+    - [x] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php#example-238))
     - Dans les classes que vous venez de modifier, on veut ajouter le type de l'objet que l'on sérialise
-      - [ ] Dans chaque classe, ajouter dans le tableau retourné par `jsonSerialize()` un champ type, contenant le nom complet de la classe (Par exemple `Component\Cpu` dans la classe `Cpu`)
-      - [ ] Utiliser `self::class` ou la fonction `get_class()` pour simplifier la création de ce champ `type`
-  - [ ] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets et leurs sous-objets) (faites un `echo` ou un `var_dump()` du résultat).
+      - [x] Dans chaque classe, ajouter dans le tableau retourné par `jsonSerialize()` un champ type, contenant le nom complet de la classe (Par exemple `Component\Cpu` dans la classe `Cpu`)
+      - [x] Utiliser `self::class` ou la fonction `get_class()` pour simplifier la création de ce champ `type`
+  - [x] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets et leurs sous-objets) (faites un `echo` ou un `var_dump()` du résultat).
 
 ### 6.1. Renvoyer des données sérialisées
 
 - Nous voulons maintenant retourner des données au format json et faire en sorte que les headers soient correctement définis (que le navigateur comprenne qu'il est face à du JSON). Nous allons utiliser un paramètre dans notre url, quand nous voulons récupérer des informations d'API.
-  - [ ] Dans `index.php`, récupérer un éventuel paramètre `api` dans l'url (que nous utiliserons par la suite)
-    - [ ] S'il est défini, nous voulons prévenir le navigateur que nous allons lui envoyer des données en JSON (grâce à la fonction `header()` de PHP)
-    - [ ] S'il est défini, afficher (avec un `echo`) un objet de type `Computer`, sérialisé avec la fonction `json_encode` (attention, on ne veut que cette donnée dans l'affichage, il ne doit pas y avoir d'autres `var_dump` ou d'autres `echo`)
-  - [ ] Appeler votre page index.php avec le paramètre `index.php?api` et vérifier le rendu
+  - [x] Dans `index.php`, récupérer un éventuel paramètre `api` dans l'url (que nous utiliserons par la suite)
+    - [x] S'il est défini, nous voulons prévenir le navigateur que nous allons lui envoyer des données en JSON (grâce à la fonction `header()` de PHP)
+    - [x] S'il est défini, afficher (avec un `echo`) un objet de type `Computer`, sérialisé avec la fonction `json_encode` (attention, on ne veut que cette donnée dans l'affichage, il ne doit pas y avoir d'autres `var_dump` ou d'autres `echo`)
+  - [x] Appeler votre page index.php avec le paramètre `index.php?api` et vérifier le rendu
 
 ## 7. Compatibilité des composants et périphériques (/!\ difficile)
 
